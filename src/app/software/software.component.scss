@@ -86,8 +86,10 @@
   background-color: black;
 }
 
-body {
-  background-image: url("../../../src/assets/mac_bg.jpg") !important;
+.full-container {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../src/assets/mac_bg.jpg");
   background-size: cover;
   background-repeat: none;
 }

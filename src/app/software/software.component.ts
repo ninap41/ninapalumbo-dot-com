@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Observable, timer } from "rxjs";
 import { BlinkService } from "./blink.service";
 @Component({
   selector: "app-software",
   templateUrl: "./software.component.html",
-  styleUrls: ["./software.component.scss"],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ["./software.component.scss"]
 })
 export class SoftwareComponent implements OnInit {
   selection = {
