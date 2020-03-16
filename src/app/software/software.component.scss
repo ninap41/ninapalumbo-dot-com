@@ -1,0 +1,93 @@
+.terminal-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  border-radius: 6px;
+  padding-top: 2rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  background-color: rgb(15, 15, 16);
+}
+
+.terminal-contiainer pre {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  color: white;
+  margin-top: 1rem;
+  padding: 0 1rem 1rem;
+  margin: 0;
+}
+
+// Contained
+.terminal {
+  position: relative;
+  z-index: 400;
+  width: 80%;
+  max-width: 600px;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding-top: 45px;
+  margin-top: 8px;
+  overflow: hidden;
+  background-color: rgb(15, 15, 16);
+}
+
+.terminal-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: rgb(58, 58, 58);
+  color: #c2c3c4;
+  width: 100%;
+  font-size: 2rem;
+  line-height: 0;
+  padding: 14px 0;
+  text-indent: 4px;
+}
+
+.terminal pre {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  color: white;
+  padding: 0 1rem 1rem;
+  margin: 0;
+}
+
+// modal
+
+.modal-dialog > * {
+  color: greenyellow;
+  background: rgb(58, 58, 58);
+}
+
+.modal-footer {
+  border: none;
+  background-color: black;
+  background: black;
+}
+
+.backdrop-text {
+  margin-top: 2rem;
+  color: greenyellow;
+}
+
+.red-dot {
+  color: red;
+}
+
+.yellow-dot {
+  color: yellow;
+}
+
+.green-dot {
+  color: green;
+}
+
+.modal-body {
+  background-color: black;
+}
+
+body {
+  background-image: url("../../../src/assets/mac_bg.jpg") !important;
+  background-size: cover;
+  background-repeat: none;
+}

@@ -1,0 +1,89 @@
+<div class="container">
+  <a
+    class="nav-link "
+    [routerLink]="['/']"
+    routerLinkActive="router-link-active"
+    >Back Home</a
+  >
+  <div class="terminal-container">
+    <div class="terminal-before">
+      <span>
+        <span class="red-dot">&bull;</span>
+        <span class="yellow-dot">&bull;</span>
+        <span class="green-dot">&bull;</span>
+      </span>
+    </div>
+    <div class="container">
+      <p class="backdrop-text">Last login: {{ today | date: "fullDate" }}</p>
+      <p class="backdrop-text">
+        <a data-toggle="modal" data-target="#modelId">
+          ninapalumbo-website:~ SoftwareProjects$ >
+          <span style="cursor: pointer">{{ softwareBlink.blinkString }}</span>
+        </a>
+      </p>
+    </div>
+    <!-- <div class="terminal" ngDraggable ngResizable [ngSwitch]="selection.value">
+    <div class="terminal-before">
+      <span>
+        <span class="red-dot">&bull;</span>
+        <span class="yellow-dot">&bull;</span>
+        <span class="green-dot">&bull;</span>
+      </span>
+    </div>
+
+    <pre *ngSwitchDefault>ng generate component xyz</pre>
+    <pre *ngSwitchCase="'material'">
+
+
+Software Projects  {{ softwareBlink.blinkString }}
+    </pre>
+
+    <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
+    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
+    <pre *ngSwitchCase="'test'">ng test</pre>
+    <pre *ngSwitchCase="'build'">ng build --prod</pre>
+  </div> -->
+
+    <!-- Button trigger modal -->
+
+    <!-- Button trigger modal -->
+    <!-- <button
+  type="button"
+  class="btn btn-primary btn-lg"
+  data-toggle="modal"
+  data-target="#modelId"
+>
+  Launch
+</button> -->
+
+    <!-- Modal -->
+    <div
+      ngDraggable
+      class="modal fade"
+      id="modelId"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="terminal">
+          <div class="terminal-before">
+            <span>
+              <span data-dismiss="modal" class="red-dot">&bull;</span>
+              <span class="yellow-dot">&bull;</span>
+              <span class="green-dot">&bull;</span>
+            </span>
+          </div>
+
+          <div class="modal-body">
+            Body content
+          </div>
+          <div class="modal-footer">
+            <button class="" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

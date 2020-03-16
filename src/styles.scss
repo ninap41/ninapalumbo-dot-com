@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px !important;
+  padding: 0px !important;
+
+  //   background-color: #e4e4d7;
+  overflow-x: hidden;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+p {
+  text-indent: 50px;
+}

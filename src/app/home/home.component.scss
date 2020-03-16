@@ -1,0 +1,41 @@
+a {
+  color: rgb(59, 37, 37);
+  text-decoration: none;
+}
+
+p {
+  color: rgb(114, 114, 114);
+}
+
+.span-image {
+  margin: 0;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.second-row {
+  display: flex;
+  flex-direction: row-reverse;
+  overflow-y: hidden;
+  align-items: center;
+}
+
+.third-row {
+  display: flex;
+  overflow-y: hidden;
+  align-items: center;
+}
+
+.col-lg-4 {
+  padding: 1rem 0;
+}
+
+.main-profile-img {
+  background-image: url("../../../src/assets/Selfportraitfinal.png");
+  background-size: cover;
+  min-height: 450px;
+  height: 100%;
+  width: 100%;
+}
