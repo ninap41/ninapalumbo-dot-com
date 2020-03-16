@@ -19,7 +19,7 @@
   top: 0;
   right: 0;
   left: 0;
-  > p {
+  > span {
     padding-left: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -27,7 +27,7 @@
   }
 }
 
-.contain-icons {
+.contain-icons a {
   > svg {
     height: 60px;
     width: 70px;
@@ -36,22 +36,18 @@
 }
 
 .contain-icons {
-  > svg:nth-child(1):hover {
+  a:nth-child(1) > svg:hover {
     fill: rgb(0, 0, 255) !important;
   }
 
-  > svg:nth-child(2):hover {
-    fill: rgb(0, 189, 63) !important;
-  }
-
-  > svg:nth-child(3):hover {
+  a:nth-child(2) > svg:hover {
     fill: rgb(161, 106, 2) !important;
   }
 
-  > svg:nth-child(4):hover {
+  a:nth-child(3) > svg:hover {
     fill: rgb(0, 135, 224) !important;
   }
-  > svg:nth-child(5):hover {
+  a:nth-child(4) > svg:hover {
     fill: rgb(255, 0, 0) !important;
   }
 }
