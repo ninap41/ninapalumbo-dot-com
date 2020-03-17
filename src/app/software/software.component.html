@@ -1,12 +1,20 @@
 <div class="full-container">
-  <div class="container">
-    <a
-      class="nav-link "
-      [routerLink]="['/']"
-      routerLinkActive="router-link-active"
-      >Back Home</a
-    >
-    <div class="terminal-container">
+  <div class="container ">
+    <div class="row icon-row">
+      <div ngDraggable class="col-lg-3 image ">
+        <img src="assets/IconYo.png" alt="" />
+        <span class="text-white">Software.App</span>
+      </div>
+      <div ngDraggable class="col-lg-3 image">
+        <img src="assets/IconYo.png" alt="" />
+        <span class="text-white">About.App</span>
+      </div>
+      <div ngDraggable class="col-lg-3  image">
+        <img src="assets/IconYo.png" alt="" />
+        <span class="text-white">Games</span>
+      </div>
+    </div>
+    <div class="terminal-container " ngDraggable ngResizable>
       <div class="terminal-before">
         <span>
           <span class="red-dot">&bull;</span>
@@ -15,12 +23,22 @@
         </span>
       </div>
       <div class="container">
-        <p class="backdrop-text">Last login: {{ today | date: "fullDate" }}</p>
+        <p class="backdrop-text ">Last login: {{ today | date: "fullDate" }}</p>
         <p class="backdrop-text">
-          <a data-toggle="modal" data-target="#modelId">
+          <span class="special">
+            <!-- <a data-toggle="modal" data-target="#modelId"> -->
             ninapalumbo:website:~ SoftwareProjects$ >
             <span style="cursor: pointer">{{ softwareBlink.blinkString }}</span>
-          </a>
+            <!-- </a> -->
+          </span>
+        </p>
+        <p class="backdrop-text">
+          <span class="special">
+            ninapalumbo:website:~ SoftwareProjects$ >
+            <span style="cursor: pointer">{{
+              softwareLongBlink.blinkLongString
+            }}</span>
+          </span>
         </p>
       </div>
       <!-- <div class="terminal" ngDraggable ngResizable [ngSwitch]="selection.value">

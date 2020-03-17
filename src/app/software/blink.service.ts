@@ -1,28 +1,20 @@
 import { Component, OnInit } from "@angular/core";
-import { Observable, timer } from "rxjs";
+import { Observable, timer, Subscription } from "rxjs";
 
 class Blink {
   blinkString: string;
+  blinkLongString: string;
+
   obsTimer: Observable<number>;
   constructor(blinkString: string, timer: Observable<number>) {
     this.blinkString = blinkString;
+    this.blinkLongString = "";
     this.obsTimer = timer;
   }
 }
 
 export class BlinkService {
-  blink: Blink;
-
-  constructor() {
-    this.blink = new Blink("|", timer(1000, 500));
-    this.blink.obsTimer.subscribe(currTime => {
-      if (currTime % 2 === 0) {
-        this.blink.blinkString = "";
-      } else {
-        this.blink.blinkString = "|";
-      }
-    });
-  }
+  constructor() {}
 
   public returnUniqueBlink(val: string, time: number) {
     var blink = new Blink(val, timer(1000, time));
@@ -32,6 +24,26 @@ export class BlinkService {
       } else {
         blink.blinkString = val;
       }
+    });
+    return blink;
+  }
+
+  public testDic() {}
+
+  public construct_dic = {};
+
+  public returnTypingString(val: string, time: number) {
+    var blink = new Blink(val, timer(1000, time));
+    var sub = new Subscription();
+    blink.blinkLongString = "";
+    sub = blink.obsTimer.subscribe(currTime => {
+      if (blink.blinkLongString === val) {
+        console.log(val);
+        blink.blinkLongString = val;
+        return sub.unsubscribe();
+      }
+      if (currTime !== val.length - 1) blink.blinkLongString += val[currTime];
+      else blink.blinkLongString = val;
     });
     return blink;
   }
