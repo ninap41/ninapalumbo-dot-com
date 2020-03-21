@@ -1,0 +1,36 @@
+<div class="terminal-container " ngDraggable ngResizable>
+  <div class="terminal-before">
+    <span>
+      <span class="red-dot">&bull;</span>
+      <span class="yellow-dot">&bull;</span>
+      <span class="green-dot">&bull;</span>
+    </span>
+  </div>
+
+  <div class="container">
+    <p class="backdrop-text ">Last login: {{ today | date: "fullDate" }}</p>
+    <p class="backdrop-text">
+      <span class="special">
+        <!-- <a data-toggle="modal" data-target="#modelId"> -->
+        ninapalumbo:website:~ SoftwareProjects$ >
+        <span style="cursor: pointer">
+          a string
+          <!-- {{ softwareBlink.blinkString }} -->
+        </span>
+        <!-- </a> -->
+      </span>
+    </p>
+    <p class="backdrop-text">
+      <span class="special">
+        ninapalumbo:website:~ SoftwareProjects$ >
+        <span style="cursor: pointer">
+          <!-- {{
+        softwareLongBlink.blinkLongString
+      }} -->
+
+          a blink string
+        </span>
+      </span>
+    </p>
+  </div>
+</div>

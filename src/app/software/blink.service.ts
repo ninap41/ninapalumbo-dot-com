@@ -14,6 +14,8 @@ class Blink {
 }
 
 export class BlinkService {
+  modalState: Boolean = false;
+
   constructor() {}
 
   public returnUniqueBlink(val: string, time: number) {
@@ -27,10 +29,6 @@ export class BlinkService {
     });
     return blink;
   }
-
-  public testDic() {}
-
-  public construct_dic = {};
 
   public returnTypingString(val: string, time: number) {
     var blink = new Blink(val, timer(1000, time));

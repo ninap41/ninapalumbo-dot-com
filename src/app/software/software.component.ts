@@ -24,4 +24,8 @@ export class SoftwareComponent implements OnInit {
       100
     );
   }
+
+  toggleModalState() {
+    this._bs.modalState = !this._bs.modalState;
+  }
 }

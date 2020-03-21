@@ -1,20 +1,32 @@
 <div class="full-container">
   <div class="container ">
-    <div class="row icon-row">
-      <div ngDraggable class="col-lg-3 image ">
-        <img src="assets/IconYo.png" alt="" />
+    <div class=" icon-row">
+      <div
+        (click)="toggleModalState()"
+        ngDraggable
+        ngResizable
+        [rzGrid]="50"
+        class="col-lg-3 image"
+      >
+        <img width="100px" src="assets/terminalIcon.png" alt="" />
         <span class="text-white">Software.App</span>
       </div>
-      <div ngDraggable class="col-lg-3 image">
-        <img src="assets/IconYo.png" alt="" />
+      <div (click)="toggleModalState()" class="col-lg-3 image">
+        <img width="100px" src="assets/IconYo.png" alt="" />
         <span class="text-white">About.App</span>
       </div>
-      <div ngDraggable class="col-lg-3  image">
-        <img src="assets/IconYo.png" alt="" />
+      <div (click)="toggleModalState()" class="col-lg-3  image">
+        <img width="100px" src="assets/IconYo.png" alt="" />
         <span class="text-white">Games</span>
       </div>
     </div>
-    <div class="terminal-container " ngDraggable ngResizable>
+
+    <div *ngIf="_bs.modalState">
+      asd
+      <app-terminal></app-terminal>
+    </div>
+
+    <!-- <div class="terminal-container " ngDraggable ngResizable>
       <div class="terminal-before">
         <span>
           <span class="red-dot">&bull;</span>
@@ -22,14 +34,13 @@
           <span class="green-dot">&bull;</span>
         </span>
       </div>
+
       <div class="container">
         <p class="backdrop-text ">Last login: {{ today | date: "fullDate" }}</p>
         <p class="backdrop-text">
           <span class="special">
-            <!-- <a data-toggle="modal" data-target="#modelId"> -->
             ninapalumbo:website:~ SoftwareProjects$ >
             <span style="cursor: pointer">{{ softwareBlink.blinkString }}</span>
-            <!-- </a> -->
           </span>
         </p>
         <p class="backdrop-text">
@@ -41,42 +52,9 @@
           </span>
         </p>
       </div>
-      <!-- <div class="terminal" ngDraggable ngResizable [ngSwitch]="selection.value">
-    <div class="terminal-before">
-      <span>
-        <span class="red-dot">&bull;</span>
-        <span class="yellow-dot">&bull;</span>
-        <span class="green-dot">&bull;</span>
-      </span>
-    </div>
-
-    <pre *ngSwitchDefault>ng generate component xyz</pre>
-    <pre *ngSwitchCase="'material'">
-
-
-Software Projects  {{ softwareBlink.blinkString }}
-    </pre>
-
-    <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-    <pre *ngSwitchCase="'test'">ng test</pre>
-    <pre *ngSwitchCase="'build'">ng build --prod</pre>
-  </div> -->
-
-      <!-- Button trigger modal -->
-
-      <!-- Button trigger modal -->
-      <!-- <button
-  type="button"
-  class="btn btn-primary btn-lg"
-  data-toggle="modal"
-  data-target="#modelId"
->
-  Launch
-</button> -->
-
-      <!-- Modal -->
-      <div
+    </div> -->
+    <!-- Modal -->
+    <!-- <div
         ngDraggable
         class="modal fade"
         id="modelId"
@@ -103,7 +81,6 @@ Software Projects  {{ softwareBlink.blinkString }}
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div> -->
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { MDBBootstrapModule } from "angular-bootstrap-md";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -11,6 +11,8 @@ import { MusicComponent } from "./music/music.component";
 import { SoftwareComponent } from "./software/software.component";
 import { AboutComponent } from "./about/about.component";
 import { BlinkService } from "./software/blink.service";
+import { TerminalComponent } from "./software/terminal/terminal.component";
+import { ArtService } from "./art/art.service";
 
 @NgModule({
   declarations: [
@@ -19,15 +21,19 @@ import { BlinkService } from "./software/blink.service";
     ArtComponent,
     MusicComponent,
     SoftwareComponent,
-    AboutComponent
+    AboutComponent,
+    TerminalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularDraggableModule
+    AngularDraggableModule,
+    MDBBootstrapModule.forRoot()
   ],
-  providers: [BlinkService],
+  schemas: [NO_ERRORS_SCHEMA],
+
+  providers: [BlinkService, ArtService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,0 +1,86 @@
+{
+  "art": {
+    "artworks": [
+      {
+        "name": "Feeling Sick",
+
+        "path": "assets/art/feelingsick.jpg",
+        "links": "",
+        "process": "",
+        "year": "2017",
+        "description": "Made With Procreate",
+        "tags": ["2017"]
+      },
+      {
+        "name": "Building A Nest",
+
+        "path": "assets/art/building a nest.jpg",
+        "links": "",
+        "process": "",
+        "year": "",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "I Think This Will Sell",
+
+        "path": "assets/art/ithinkthiswillsell.jpg",
+        "links": "",
+        "process": "",
+        "year": "",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "",
+
+        "path": "assets/art",
+        "links": "",
+        "process": "",
+        "year": "",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "",
+
+        "path": "assets/art",
+        "links": "",
+        "process": "",
+        "year": "",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "",
+
+        "path": "assets/art",
+        "links": "",
+        "process": "",
+        "year": "",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "",
+
+        "path": "assets/art",
+        "links": "",
+        "process": "",
+        "year": "",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "",
+
+        "path": "assets/art",
+        "links": "",
+        "process": "",
+        "year": "",
+        "description": "",
+        "tags": []
+      }
+    ]
+  }
+}
