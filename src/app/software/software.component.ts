@@ -10,20 +10,12 @@ export class SoftwareComponent implements OnInit {
   selection = {
     value: "material"
   };
-  today: number = Date.now();
 
-  softwareBlink;
-  softwareLongBlink;
+  today: number = Date.now();
 
   constructor(public _bs: BlinkService) {}
 
-  ngOnInit(): void {
-    this.softwareBlink = this._bs.returnUniqueBlink("(click me)", 500);
-    this.softwareLongBlink = this._bs.returnTypingString(
-      "Hi. Um, I'm a recovering crackhead. This is my retarded sister that I take care of. I'd like some welfare, please.",
-      100
-    );
-  }
+  ngOnInit(): void {}
 
   toggleModalState() {
     this._bs.modalState = !this._bs.modalState;

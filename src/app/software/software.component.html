@@ -1,5 +1,5 @@
 <div class="full-container">
-  <div class="container ">
+  <div class="container">
     <div class=" icon-row">
       <div
         (click)="toggleModalState()"
@@ -23,7 +23,7 @@
 
     <div *ngIf="_bs.modalState">
       asd
-      <app-terminal></app-terminal>
+      <app-terminal [toggleModalState]="toggleModalState"></app-terminal>
     </div>
 
     <!-- <div class="terminal-container " ngDraggable ngResizable>

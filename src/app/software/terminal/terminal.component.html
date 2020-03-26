@@ -1,7 +1,7 @@
-<div class="terminal-container " ngDraggable ngResizable>
+<div class="terminal-container" ngDraggable ngResizable>
   <div class="terminal-before">
     <span>
-      <span class="red-dot">&bull;</span>
+      <span (click)="toggleModalState()" class="red-dot">&bull;</span>
       <span class="yellow-dot">&bull;</span>
       <span class="green-dot">&bull;</span>
     </span>
@@ -14,8 +14,7 @@
         <!-- <a data-toggle="modal" data-target="#modelId"> -->
         ninapalumbo:website:~ SoftwareProjects$ >
         <span style="cursor: pointer">
-          a string
-          <!-- {{ softwareBlink.blinkString }} -->
+          {{ softwareBlink.blinkString }}
         </span>
         <!-- </a> -->
       </span>
@@ -24,11 +23,7 @@
       <span class="special">
         ninapalumbo:website:~ SoftwareProjects$ >
         <span style="cursor: pointer">
-          <!-- {{
-        softwareLongBlink.blinkLongString
-      }} -->
-
-          a blink string
+          {{ softwareLongBlink.blinkLongString }}
         </span>
       </span>
     </p>
