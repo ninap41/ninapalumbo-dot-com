@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ɵPlayState } from "@angular/core";
 import { ArtService, MainDisplay } from "./art.service";
 import { Observable, timer, Subscription, of } from "rxjs";
 import { Template } from "@angular/compiler/src/render3/r3_ast";
@@ -17,23 +17,21 @@ export class ArtComponent implements OnInit {
   mainDisplay: MainDisplay;
   artDescriptionConfig;
   blinkDescript;
+  array = ["high", "how", "are", "you"];
+  number;
   constructor(private _as: ArtService, public _bs: BlinkService) {
     this.mainDisplay = _as.art;
-
     this.artDescriptionConfig = {
       cursor: str => {
         this._bs.returnUniqueBlink(str, 500);
       },
       iterator: str => {
-        return this._bs.returnTypingString(str, 100);
+        this._bs.returnTypingString(str, 100);
       },
       pressEnter: (data: string, evt: KeyboardEvent) => {
         console.log(data, "data", evt, "evt");
-      }
-      // playScript: async (displayScript: Array<string>) => {
-      //   displayScript.map(async str => {
-      //     await this.artDescriptionConfig.iterator(str);
-      //   });
+      },
+      playScript: async (displayScript: Array<string>) => {}
     };
     // this.mainDisplay.showingWorks = this.mainDisplay.showingWorks.map(art => {
     //   return {
