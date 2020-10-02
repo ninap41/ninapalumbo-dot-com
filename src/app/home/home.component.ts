@@ -1,14 +1,13 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { Component, OnInit } from "@angular/core";
+import { StorageService } from "../services/storage.service";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
-  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(public _ls: StorageService) {}
 
   ngOnInit(): void {}
 }

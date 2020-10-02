@@ -1,0 +1,67 @@
+<div class="container">
+  <form (ngSubmit)="this._ls.addNewLog(htmlContent)">
+    <div class="form-group">
+      <label for="entry">
+        <small id="fileHelp" class="form-text text-muted">
+          Add Entry, Automatically saves to local storage under "Log"
+          key.</small
+        >
+      </label>
+
+      <angular-editor
+        [placeholder]="'Enter text here...'"
+        [(ngModel)]="htmlContent.htmlContent1"
+        name="htmlContent1"
+      ></angular-editor>
+
+      <!-- <textarea
+        minlength="5"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        name="entry"
+        rows="3"
+      ></textarea> -->
+    </div>
+
+    <button class="btn btn-primary mb-2" type="submit">Add New Log</button>
+    <button
+      class="btn btn-danger mb-2"
+      type="button"
+      (click)="this._ls.wipeStorageByKey('log')"
+    >
+      Wipe All Logs
+    </button>
+  </form>
+</div>
+<div class="container">
+  <span class="col-md-6" *ngIf="this._ls.log">
+    <span *ngIf="this._ls.log.entries !== undefined">
+      <div
+        class="list-group"
+        *ngFor="let entry of this._ls.log.entries; index as idx"
+      >
+        <span
+          href="#"
+          class="list-group-item list-group-item-action flex-column align-items-start"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"></h5>
+            <small>{{ entry.date | date: " h:mm a" }} </small>
+          </div>
+
+          <p class="mb-1">
+            "<span [innerHTML]="' ' + entry.content + ' '"></span>"
+          </p>
+
+          <small> - {{ entry.date | date: "LLLL dd, yyyy" }} </small>
+        </span>
+        <button
+          class="btn btn-sm btn-danger"
+          (click)="this._ls.deleteIndex(entry.id, 'log', 'entries')"
+        >
+          Delete
+        </button>
+      </div>
+    </span>
+  </span>
+</div>
