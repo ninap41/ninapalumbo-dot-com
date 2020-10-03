@@ -23,6 +23,7 @@ import {
   HttpClientModule,
 } from "@angular/common/http";
 import { LogComponent } from "./log/log.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -32,13 +33,13 @@ import { LogComponent } from "./log/log.component";
     HomeComponent,
     BagComponent,
     // HttpHandler,
-
     SaveComponent,
     LogComponent,
   ],
 
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     AngularEditorModule,
     FormsModule,
     ReactiveFormsModule,

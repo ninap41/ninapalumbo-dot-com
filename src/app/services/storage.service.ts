@@ -1,3 +1,4 @@
+import { rendererTypeName } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { Character } from "../classes/Character.class";
@@ -43,12 +44,30 @@ export class StorageService {
     this.setStorage();
   }
 
+  sort(order: string, localStorageKey: string, arrayKey: string) {
+    console.log(this[localStorageKey][arrayKey], "ls");
+    this[localStorageKey][arrayKey] = this[localStorageKey][arrayKey].sort(
+      function (a, b) {
+        return new Date(a.date).getTime() > new Date(b.date).getTime()
+          ? order === "asc"
+            ? -1
+            : 1
+          : order === "asc"
+          ? 1
+          : -1;
+      }
+    );
+    console.log(this.log.entries);
+    this.setStorage();
+  }
+
   addNewLog(event) {
-    const val = event.htmlContent1;
+    const val = event.content;
     let entry = {
       id: Math.floor(Math.random() * 999999999),
       content: val,
       date: new Date(),
+      editedDate: null,
     };
     if (this.log.hasOwnProperty("entries")) {
       this.log.entries.push(entry);
@@ -88,11 +107,35 @@ export class StorageService {
     this.setStorage();
   }
 
-  deleteIndex(id: string, localStorageKey: string, arrayKey: string) {
+  deleteById(id: string, localStorageKey: string, arrayKey: string) {
     var newArray = this[localStorageKey][arrayKey].filter(
       (item) => item.id !== id
     );
     this[localStorageKey][arrayKey] = newArray;
+    this.setStorage();
+  }
+  submitEditById(
+    id: string,
+    localStorageKey: string,
+    arrayKey: string,
+    content: string
+  ) {
+    let entryToEdit = this[localStorageKey][arrayKey].find(
+      (entry, idx) => entry.id === id
+    );
+    console.log("EntryToEdit");
+    console.log(entryToEdit);
+
+    const val = content;
+    console.log(content);
+    console.log("Value");
+
+    entryToEdit.content = content;
+    this[localStorageKey][arrayKey].map((entry) => {
+      if (entry.id === entryToEdit.id) {
+        entry.content = entryToEdit.content;
+      }
+    });
     this.setStorage();
   }
 
@@ -121,8 +164,6 @@ export class StorageService {
   onFileSelect(event) {
     this.file = event.target.files[0];
   }
-
-  orderLogs() {}
 
   async submitSaveFile() {
     const fileReader = new FileReader();

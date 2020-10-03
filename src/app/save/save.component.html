@@ -72,7 +72,9 @@
     </div>
 
     <div class="btn">
-      <button class="btn-warning" type="submit">Upload</button>
+      <button class="btn-warning" type="submit">
+        <fa-icon [icon]="faUpload" class="fa-lg"></fa-icon>
+      </button>
       <small id="fileHelp" class="form-text text-muted"> </small>
     </div>
     <small id="fileHelp" class="form-text text-muted"
@@ -83,36 +85,6 @@
   </form>
   <hr />
 
-  <!-- <div class="card border-warning mb-3" style="max-width: 20rem">
-    <div class="card-body">
-      <h4 class="card-title">
-        <a
-          class="btn btn-warning"
-          type="button"
-          title="Download JSON"
-          (click)="_ls.generateDownloadJsonUri()"
-          [disabled]="this._ls.user === null"
-          >Download Save Files</a
-        >
-      </h4>
-      <p class="card-text">Save your games as JSON</p>
-    </div>
-  </div>
-  <div class="card border-danger mb-3" style="max-width: 20rem">
-    <div class="card-body">
-      <h4 class="card-title">
-        <a
-          class="btn btn-danger"
-          type="button"
-          title="Download JSON"
-          (click)="_ls.generateDownloadJsonUri()"
-          [disabled]="this._ls.user === null"
-          >DeleteSave Files</a
-        >
-      </h4>
-      <p class="card-text">Delete Games from Local Storage</p>
-    </div>
-  </div> -->
   <div class="row">
     <div class="col">
       <a
@@ -121,8 +93,8 @@
         title="Download JSON"
         (click)="_ls.generateDownloadJsonUri()"
         [disabled]="this._ls.user === null"
-        >Download Save Files</a
-      >
+        ><fa-icon [icon]="faDownload" class="fa-5x"></fa-icon
+      ></a>
       <small id="fileHelp" class="form-text text-muted">
         Save your games as JSON</small
       >
