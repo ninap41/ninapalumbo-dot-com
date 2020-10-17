@@ -32,7 +32,6 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     WorldComponent,
     HomeComponent,
     BagComponent,
-    // HttpHandler,
     SaveComponent,
     LogComponent,
   ],

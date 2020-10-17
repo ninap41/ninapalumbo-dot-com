@@ -1,7 +1,7 @@
 <div class="container">
   <form (ngSubmit)="this._ls.addNewLog(htmlContent)">
     <div class="form-group">
-      <label for="entry">
+      <label for="htmlContent1">
         <small id="fileHelp" class="form-text text-muted">
           Add Entry, Automatically saves to local storage under "Log"
           key.</small
@@ -10,10 +10,12 @@
 
       <angular-editor
         [placeholder]="'Enter text here...'"
-        [(ngModel)]="htmlContent.content"
-        name="content"
+        [(ngModel)]="htmlContent.htmlContent1"
+        [config]="editorConfig"
+        name="htmlContent1"
       ></angular-editor>
     </div>
+    {{ htmlContent.htmlContent1 | json }}
     <div class="row">
       <div class="col-sm-6">
         <button class="btn btn-primary mb-2" type="submit">Add New Log</button>
@@ -29,119 +31,127 @@
       </div>
     </div>
   </form>
+
   <div class="row container" style="flex-direction: row">
-    <div class="col sort">
-      <fa-icon
-        class="fa-lg"
-        (click)="this._ls.sort('asc', 'log', 'entries'); editStateReset()"
-        [icon]="faSortUp"
-      ></fa-icon>
-
-      <fa-icon
-        class="fa-lg"
-        (click)="this._ls.sort('desc', 'log', 'entries'); editStateReset()"
-        [icon]="faSortDown"
-      ></fa-icon>
-    </div>
-  </div>
-  <div class="container">
-    <span class="col-md-6" *ngIf="this._ls.log">
-      <span *ngIf="this._ls.log.entries !== undefined">
+    <div class="col-sm-1 logSidebarContainer bg-primary rounded">
+      <div class="sort">
         <div
-          class="list-group"
-          *ngFor="let entry of this._ls.log.entries; index as idx"
+          class="sortArrow"
+          (click)="this._ls.sort('asc', 'log', 'entries'); editStateReset()"
         >
-          <div class="card text-white bg-secondary mb-3">
-            <form
-              (ngSubmit)="
-                this._ls.submitEditById(
-                  entry.id,
-                  'log',
-                  'entries',
-                  editContent
-                );
-                editStateReset()
-              "
-              href="#"
-              class="list-group-item list-group-item-action flex-column align-items-start"
-            >
-              <div
-                class="d-flex w-100 justify-content-between"
-                *ngIf="editState.index !== idx"
-              >
-                <h4 class="mb-1">
-                  <strong>{{ entry.date | date: "LLLL dd, yyyy" }}</strong>
-                </h4>
-                <hr />
-                <small>{{ entry.date | date: " h:mm a" }} </small>
-              </div>
-              <div
-                class="form-group"
-                *ngIf="editState.state && editState.index === idx"
-              >
-                <label for="exampleFormControlTextarea1">Edit</label>
-                <textarea
-                  [(ngModel)]="editContent"
-                  class="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="10"
-                  [value]="entry.content"
-                  name="edit"
-                ></textarea>
-              </div>
-              <p class="mb-1">
-                <button
-                  class="btn-success"
-                  *ngIf="editState.state && editState.index === idx"
-                  type="submit"
-                >
-                  <fa-icon
-                    style="color: rgb(160, 245, 160); margin-left: 0.25rem"
-                    [icon]="faCheck"
-                    >Submit</fa-icon
-                  >
-                </button>
-                <button
-                  class="btn-danger"
-                  *ngIf="editState.state && editState.index === idx"
-                >
-                  <fa-icon
-                    style="color: rgb(245, 160, 160); margin-left: 0.25rem"
-                    [icon]="faWindowClose"
-                    *ngIf="editState.state && editState.index === idx"
-                    (click)="toggleEdit($event, idx)"
-                  ></fa-icon>
-                </button>
-
-                <span
-                  *ngIf="editState.index === null || editState.index !== idx"
-                  [innerHTML]="' ' + entry.content + ' '"
-                ></span>
-              </p>
-
-              <small>
-                <div
-                  class="row"
-                  style="flex-direction: row-reverse; margin-right: 0.25rem"
-                >
-                  <fa-icon
-                    [icon]="faTrashAlt"
-                    (click)="this._ls.deleteById(entry.id, 'log', 'entries')"
-                    class="fa-xs"
-                  ></fa-icon>
-                  <fa-icon
-                    [icon]="faEdit"
-                    (click)="
-                      toggleEdit($event, idx); editContent = entry.content
-                    "
-                    class="fa-xs"
-                  ></fa-icon>
-                </div>
-              </small>
-            </form>
-          </div>
+          New
+          <fa-icon class="fa-lg" [icon]="faSortUp"></fa-icon>
         </div>
+        <div
+          class="sortArrow"
+          (click)="this._ls.sort('desc', 'log', 'entries'); editStateReset()"
+        >
+          <fa-icon class="fa-lg" [icon]="faSortDown"></fa-icon>
+          Old
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-11 container logContainer bg-primary rounded">
+      <span class="col-md-6" *ngIf="this._ls.log">
+        <span *ngIf="this._ls.log.entries !== undefined">
+          <div
+            class="list-group"
+            *ngFor="let entry of this._ls.log.entries; index as idx"
+          >
+            <div class="card text-white bg-secondary mb-3">
+              <form
+                (ngSubmit)="
+                  this._ls.submitEditById(
+                    entry.id,
+                    'log',
+                    'entries',
+                    htmlContent.htmlContent1
+                  );
+                  editStateReset()
+                "
+                href="#"
+                class="list-group-item list-group-item-action flex-column align-items-start"
+              >
+                <div
+                  class="d-flex w-100 justify-content-between"
+                  *ngIf="editState.index !== idx"
+                >
+                  <h4 class="mb-1">
+                    <strong>{{ entry.date | date: "LLLL dd, yyyy" }}</strong>
+                  </h4>
+                  <hr />
+                  <small>{{ entry.date | date: " h:mm a" }} </small>
+                </div>
+                <div
+                  class="form-group"
+                  *ngIf="editState.state && editState.index === idx"
+                >
+                  <label for="exampleFormControlTextarea1">Edit</label>
+                  <textarea
+                    [(ngModel)]="htmlContent.htmlContent1"
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="10"
+                    [value]="entry.content"
+                    name="edit"
+                  ></textarea>
+                </div>
+                <p class="mb-1">
+                  <button
+                    class="btn-success"
+                    *ngIf="editState.state && editState.index === idx"
+                    type="submit"
+                  >
+                    <fa-icon
+                      style="color: rgb(160, 245, 160); margin-left: 0.25rem"
+                      [icon]="faCheck"
+                      >Submit</fa-icon
+                    >
+                  </button>
+                  <button
+                    class="btn-danger"
+                    *ngIf="editState.state && editState.index === idx"
+                  >
+                    <fa-icon
+                      style="color: rgb(245, 160, 160); margin-left: 0.25rem"
+                      [icon]="faWindowClose"
+                      *ngIf="editState.state && editState.index === idx"
+                      (click)="toggleEdit($event, idx)"
+                    ></fa-icon>
+                  </button>
+
+                  <span
+                    *ngIf="editState.index === null || editState.index !== idx"
+                    [innerHTML]="entry.content"
+                  ></span>
+                </p>
+
+                <small>
+                  <div
+                    class="row"
+                    style="flex-direction: row-reverse; margin-right: 0.25rem"
+                  >
+                    <fa-icon
+                      [icon]="faTrashAlt"
+                      (click)="this._ls.deleteById(entry.id, 'log', 'entries')"
+                      class="fa-xs"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      (click)="
+                        toggleEdit($event, idx);
+                        htmlContent.htmlContent1 = entry.content
+                      "
+                      class="fa-xs"
+                    ></fa-icon>
+                  </div>
+                </small>
+              </form>
+            </div>
+          </div>
+        </span>
       </span>
-    </span>
+    </div>
   </div>
 </div>

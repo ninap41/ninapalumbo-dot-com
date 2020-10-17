@@ -8,9 +8,52 @@ import {
   faCheck,
   faWindowClose,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontawesomeObject } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { AngularEditorConfig } from "@kolkov/angular-editor";
+import { HtmlParser } from "@angular/compiler";
+import { toHtml } from "@fortawesome/fontawesome-svg-core";
 
+var editorConfig: AngularEditorConfig = {
+  editable: true,
+  spellcheck: true,
+  height: "auto",
+  minHeight: "0",
+  maxHeight: "auto",
+  width: "auto",
+  minWidth: "0",
+  translate: "yes",
+  enableToolbar: true,
+  showToolbar: true,
+  placeholder: "Enter text here...",
+  defaultParagraphSeparator: "",
+  defaultFontName: "",
+  defaultFontSize: "",
+  fonts: [
+    { class: "arial", name: "Arial" },
+    { class: "times-new-roman", name: "Times New Roman" },
+    { class: "calibri", name: "Calibri" },
+    { class: "comic-sans-ms", name: "Comic Sans MS" },
+  ],
+  customClasses: [
+    {
+      name: "quote",
+      class: "quote",
+    },
+    {
+      name: "redText",
+      class: "redText",
+    },
+    {
+      name: "titleText",
+      class: "titleText",
+      tag: "h1",
+    },
+  ],
+  uploadUrl: "v1/image",
+  uploadWithCredentials: false,
+  sanitize: false,
+  toolbarPosition: "top",
+  // toolbarHiddenButtons: [["bold", "italic"], ["fontSize"]],
+};
 @Component({
   selector: "app-log",
   templateUrl: "./log.component.html",
@@ -27,14 +70,12 @@ export class LogComponent implements OnInit {
     state: false,
     index: null,
   };
+  editorConfig = editorConfig;
 
   constructor(public _ls: StorageService) {}
   htmlContent = {
-    content: "",
-    tags: [],
+    htmlContent1: toHtml(""),
   };
-
-  editContent = "";
 
   ngOnInit(): void {
     this._ls.updateStorageKey("log");

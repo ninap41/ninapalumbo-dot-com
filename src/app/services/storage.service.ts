@@ -44,6 +44,24 @@ export class StorageService {
     this.setStorage();
   }
 
+  convertHTML(str) {
+    // &colon;&rpar;
+    var toHTML = {
+      "&amp;": "&",
+      "&lt;": "<",
+      "&gt;": ">",
+      "&quot;": '"',
+      "&apos;": "'",
+    };
+    str = str.replace(/&amp;/g, toHTML["&amp;"]);
+    str = str.replace(/&lt;/g, toHTML["&lt;"]);
+    str = str.replace(/&gt;/g, toHTML["&gt;"]);
+    str = str.replace(/&quot;/g, toHTML["&quot;"]);
+    str = str.replace(/&apos;/g, toHTML["&apos;"]);
+
+    return str;
+  }
+
   sort(order: string, localStorageKey: string, arrayKey: string) {
     console.log(this[localStorageKey][arrayKey], "ls");
     this[localStorageKey][arrayKey] = this[localStorageKey][arrayKey].sort(
@@ -62,12 +80,14 @@ export class StorageService {
   }
 
   addNewLog(event) {
-    const val = event.content;
+    console.log(event);
+    const val = this.convertHTML(event.htmlContent1);
+
+    console.log(val);
     let entry = {
       id: Math.floor(Math.random() * 999999999),
       content: val,
       date: new Date(),
-      editedDate: null,
     };
     if (this.log.hasOwnProperty("entries")) {
       this.log.entries.push(entry);

@@ -6,10 +6,15 @@ li {
   list-style-type: none !important;
 }
 
-a {
+li > a {
   color: white;
 }
 
-a:hover {
+li > a:hover {
   color: pink;
+}
+#sourceText,
+code {
+  color: rgb(71, 218, 71) !important;
+  background-color: black !important;
 }

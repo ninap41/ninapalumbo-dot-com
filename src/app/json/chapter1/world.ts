@@ -4,7 +4,6 @@ export var chapter1 = {
     description: [
       {
         text: "You are in white room The walls are blaring white.",
-
         event: null,
       },
       {

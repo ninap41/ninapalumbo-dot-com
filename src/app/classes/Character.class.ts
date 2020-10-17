@@ -1,32 +1,36 @@
+import { AnimationFactory } from "@angular/animations";
+import { NgModule } from "@angular/core";
+import { NgModuleFactory } from "@angular/core/src/r3_symbols";
 import { Questionaire } from "./Questionaire.class";
 
 export class BravePersonality {
-  constructor() {
-  }
+  constructor() {}
   name: string;
   karmaAffect: number;
   baseBag: Array<any>;
-  modifiers: Array<Function>
+  modifiers: Array<Function>;
   health: number;
-  traits: Array<Effect>
+  traits: Array<Effect>;
 }
 
-
 export class Effect {
-  constructor(name: string, dscription: string) {
-
-  }
+  constructor(name: string, dscription: string) {}
   name: string;
   description: string;
   statAffect: Function;
 
-  isInterval() {
-
-  }
-
+  isInterval() {}
 }
 
+// class Personality {
+//  will contain before turn and after turn perks
+// loner or brave will not be a team player
+// community and logic will be.
+// a logic perk will get you out of tricky situations and count towards being able to evade enemies
+// }
+
 export class Character {
+  perks: any;
   id: number; // ✅
   name: string; // ✅
   questionaireAnswers: Array<any>; // ✅
@@ -35,19 +39,21 @@ export class Character {
   personality: any;
   karma: number;
   bag: Array<any>;
-  worldPoint: {
-    roomName: String; // not sure if this will work
-    chapter: string;
-    room: object;
-  };
+  worldPoint: Array<any>;
   chapter: object;
   health: number;
-  EquippedWeapon: Array<any>;
-  Ailments: Array<any>;
+  equippedWeapon: Array<any>;
+  ailments: Array<any>;
 
   constructor(questionaire: Questionaire) {
     this.assignTraits(questionaire);
+    this.karma = 0;
+    this.chapter = { ch: 1 };
+    this.health = 100;
+    this.equippedWeapon = null;
 
+    this.worldPoint = [{ id: 1, roomName: "Start", room: {} }];
+    this.bag = [{ name: "Door Key", description: "Just a key", type: "key" }];
     return this;
   }
 
@@ -64,8 +70,7 @@ export class Character {
         };
       }),
     };
-    console.log(mapped, "Mapped");
-    console.log(questionaire.questions, "questionaire.questions.");
+
     this.name = mapped[questionaire.questions.length - 1].answer; // length of answer array to find object id
     this.id = Math.floor(Math.random() * 1000000);
 
