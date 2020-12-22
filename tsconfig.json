@@ -2,6 +2,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "types": ["node"],
+    "typeRoots": [ "../node_modules/@types" ],
     "resolveJsonModule": true,
     "outDir": "src/dist/out-tsc",
     "sourceMap": true,

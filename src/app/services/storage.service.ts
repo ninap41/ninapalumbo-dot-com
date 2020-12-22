@@ -3,6 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { Character } from "../classes/Character.class";
 import { sampleUser, user, startingUser } from "./storage.json";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
+// local storage
 
 @Injectable({
   providedIn: "root",
@@ -14,10 +17,8 @@ export class StorageService {
 
   // key set NgOnit from component;
   storageKey: string = "user";
-
   //for downloading the save file
   file;
-
   //starting user from JSON.
   startingUser = startingUser;
   constructor() {
@@ -88,6 +89,7 @@ export class StorageService {
       id: Math.floor(Math.random() * 999999999),
       content: val,
       date: new Date(),
+      tags: [],
     };
     if (this.log.hasOwnProperty("entries")) {
       this.log.entries.push(entry);
@@ -167,14 +169,14 @@ export class StorageService {
   }
 
   generateDownloadJsonUri() {
-    // check for if file exists, add snack bars man
     var a = document.createElement("a");
     document.body.appendChild(a);
     // a.style = "display: none";
-    var blob = new Blob([JSON.stringify(this[this.storageKey], null, 2)], {
+    var blob = new Blob([JSON.stringify(this["log"], null, 2)], {
         type: "octet/stream",
       }),
       url = window.URL.createObjectURL(blob);
+
     a.href = url;
     a.download = "GameSave.json";
     a.click();

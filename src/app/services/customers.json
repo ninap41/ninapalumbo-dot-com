@@ -1,0 +1,33 @@
+{
+  "customers": [
+    {
+      "name": "niner",
+      "address": "24430 sad lane"
+    },
+    {
+      "name": "Alexius Academia",
+      "address": "Paco, Botolan, Zambales",
+      "id": 1608613515083
+    },
+    {
+      "name": "Alexius Academia",
+      "address": "Paco, Botolan, Zambales",
+      "id": 1608613709682
+    },
+    {
+      "name": "Alexius Academia",
+      "address": "Paco, Botolan, Zambales",
+      "id": 1608614759389
+    },
+    {
+      "name": "Alexius Academia",
+      "address": "Paco, Botolan, Zambales",
+      "id": 1608614830943
+    },
+    {
+      "name": "Alexius Academia",
+      "address": "Paco, Botolan, Zambales",
+      "id": 1608616149138
+    }
+  ]
+}
