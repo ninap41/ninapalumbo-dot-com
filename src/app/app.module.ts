@@ -10,12 +10,15 @@ import { AngularEditorModule } from "@kolkov/angular-editor";
 
 import { MultipleChoiceComponent } from "./multiple-choice/multiple-choice.component";
 import { GameService } from "./services/game.service";
+import { Log2Service } from "./services/log2.service";
 import { ConfigService } from "./services/config.service";
 import { WorldComponent } from "./world/world.component";
 import { StorageService } from "./services/storage.service";
 import { HomeComponent } from "./home/home.component";
 import { BagComponent } from "./bag/bag.component";
 import { SaveComponent } from "./save/save.component";
+import { Log2Component } from "./log2/log2.component";
+
 import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {
@@ -25,6 +28,7 @@ import {
 } from "@angular/common/http";
 import { LogComponent } from "./log/log.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     BagComponent,
     SaveComponent,
     LogComponent,
+    Log2Component,
   ],
 
   imports: [
@@ -44,6 +49,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+
     BrowserAnimationsModule,
     AngularDraggableModule,
     MDBBootstrapModule.forRoot(),
@@ -55,8 +61,13 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     GameService,
     ConfigService,
     StorageService,
+    Log2Service,
     FormBuilder,
     HttpClient,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
   ],
   bootstrap: [AppComponent],
 })

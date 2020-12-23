@@ -24,7 +24,7 @@ export class WorldComponent implements OnInit {
   }
 
   async getData(): Promise<any> {
-    await this.http.get("http://localhost:3000/entries").subscribe(
+    await this.http.get("http://localhost:3000/api/entries").subscribe(
       (data: Response) => {
         console.log(data);
         this.data = data;

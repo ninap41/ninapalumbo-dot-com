@@ -4,7 +4,9 @@
   "main": "./electron-main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open --proxy-config ./proxy.conf.json",
+    "server": "cd server && npm start",
+
     "build": "ng build --base-href ./ --prod",
     "electron": "ng build --base-href ./ && electron .",
     "test": "ng test",

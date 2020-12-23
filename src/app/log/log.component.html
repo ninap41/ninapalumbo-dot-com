@@ -1,4 +1,6 @@
 <div class="container">
+
+  <h2>form --> storageService.service --> web localStorage</h2>
   <form (ngSubmit)="this._ls.addNewLog(htmlContent)">
     <div class="form-group">
       <label for="htmlContent1">
@@ -61,7 +63,7 @@
             <div class="card text-white bg-secondary mb-3">
               <form
                 (ngSubmit)="
-                  this._ls.submitEditById(
+                  this._ls.editById(
                     entry.id,
                     'log',
                     'entries',

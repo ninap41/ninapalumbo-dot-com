@@ -6,6 +6,7 @@ import { MultipleChoiceComponent } from "./multiple-choice/multiple-choice.compo
 import { SaveComponent } from "./save/save.component";
 import { WorldComponent } from "./world/world.component";
 import { LogComponent } from "./log/log.component";
+import { Log2Component } from "./log2/log2.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -13,12 +14,13 @@ const routes: Routes = [
   { path: "save", component: SaveComponent },
   { path: "world", component: WorldComponent },
   { path: "log", component: LogComponent },
+  { path: "log2", component: Log2Component },
 
   { path: "bag", component: BagComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
