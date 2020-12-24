@@ -2,21 +2,27 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 
-import { Observable, of } from "rxjs";
+import { Observable, of, BehaviorSubject, Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
-export class Log2Service {
-  log: Observable<any[]>;
+export class LogService {
+  log: any = new BehaviorSubject<any[]>([]);
   storageKey: string = "log";
   baseUrl: string = "http://localhost:3000";
-  constructor(private http: HttpClient, private router_: Router) {}
+  loading: boolean = false;
+  constructor(
+    private http: HttpClient,
+    private router_: Router,
+    private route: ActivatedRoute
+  ) {}
 
   public async getEntries(): Promise<any> {
     await this.http.get(this.baseUrl + "/api/entries").subscribe(
       (data: Response) => {
         let d = data;
+        //@ts-ignore
         this.log = of(d.entries);
       },
       (err) => console.log(err)
@@ -41,64 +47,77 @@ export class Log2Service {
     return str;
   }
 
-  sort(order: string, localStorageKey: string, arrayKey: string) {
-    console.log(order);
-    console.log(this.log, "ls");
-    this.http
+  public async sort(order: string, localStorageKey: string, arrayKey: string) {
+    this.loading = true;
+    await this.http
       .get(this.baseUrl + `/api/entries/sort/${order}`)
       .subscribe((data) => {
         let d = data;
+        // @ts-ignore
         this.log = of(d.entries);
-      });
+      })
+      .unsubscribe();
+    this.loading = false;
   }
   // /api/entries/add
   public async addEntry(event): Promise<void> {
-    console.log(event);
     const val = this.convertHTML(event.htmlContent1);
-    console.log(val);
+    this.loading = true;
+
     let entry = {
-      id: Math.floor(Math.random() * 999999999),
       content: val,
       date: new Date(),
       tags: [],
     };
-    await this.http.post(this.baseUrl + "/api/entries/add/", entry).subscribe(
-      (response) => console.log("response from the api", response),
-      (err) => console.log(err)
-    );
-    this.getEntries();
-  }
-
-  public async deleteById(
-    id: string,
-    localStorageKey: string,
-    arrayKey: string
-  ): Promise<void> {
-    //Node api route
     await this.http
-      .delete(this.baseUrl + `/api/entries/delete/${id}`)
-
+      .post(this.baseUrl + "/api/entries/add/", entry)
       .subscribe(
         (response) => console.log("response from the api", response),
         (err) => console.log(err)
-      );
+      )
+      .unsubscribe();
+
     await this.getEntries();
-    this.router_.navigate(["/log2"]);
+    this.loading = false;
   }
 
-  public async findOne(id: string, localStorageKey: string, content: string) {
-    // this.http.post(`/api/entries/update/${id}`, )
+  public async deleteById(id: string, index: number): Promise<void> {
+    //Node api route
+    this.loading = true;
+    await this.http
+      .delete(this.baseUrl + `/api/entries/delete/${id}`)
+      .subscribe(
+        (response) => {
+          console.log("response from the api", response);
+        },
+        (err) => console.log(err)
+      )
+      .unsubscribe();
+    await setTimeout(async () => {
+      await confirm("Confirm Delete");
+      this.getEntries();
+    }, 1000);
+
+    this.loading = false;
   }
+
+  // public async findOne(id: string, localStorageKey: string, content: string) {
+  //   // this.http.post(`/api/entries/update/${id}`, )
+  // }
 
   public async editById(id: string, localStorageKey: string, content: string) {
     // this.http.post(`/api/entries/update/${id}`, )
   }
 
+  submitEditById(...args) {}
+
   deleteAllEntries() {
-    // localStorage.clear();
-    // this.validateIfStorageExists();
-    // // console.log(user);
-    // this.setStorage(); // set to empty user
-    // this.returnUser();
+    this.http
+      .delete(this.baseUrl + `/api/entries/deleteAll`)
+      .subscribe(
+        (res) => console.log(res, "RES"),
+        (err) => console.log(err, "ERR")
+      )
+      .unsubscribe();
   }
 }

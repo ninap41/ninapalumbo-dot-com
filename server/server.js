@@ -41,7 +41,7 @@ app.get("/api/entries", function (req, res) {
   });
 });
 
-app.post("/api/entries/add", function (req, res) {
+app.post("/api/entries/add/", function (req, res) {
   console.log(req.body);
   if (db.valid("entries", location)) {
     db.insertTableContent("entries", location, req.body, (succ, msg) => {
@@ -68,19 +68,25 @@ app.get("/api/entries/sort/:order", function (req, res) {
   }
 });
 
-app.delete("/api/entries/delete/:id", function (req, res) {
-  let id = req.params.id;
-  console.log(id);
-  let key = JSON.stringify("id");
-  const where = { id: Number(req.params.id) };
+app.delete("/api/entries/delete/:id", async function (req, res) {
+  let id_ = Number(req.params.id);
+  const where = { id: id_ };
 
-  console.log(where);
+  await db.deleteRow("entries", location, where, async (succ, msg) => {
+    try {
+      console.log(JSON.stringify(succ));
+    } catch (err) {
+      console.log(JSON.stringify(msg));
+    }
+  });
+});
 
-  db.deleteRow("entries", location, where, (succ, msg) => {
+app.delete("/api/entries/deleteAll", function (req, res) {
+  db.clearTable("entries", location, (succ, msg) => {
     if (succ) {
-      console.log(succ);
+      console.log(succ, "SUCCESS");
     } else {
-      console.log(msg);
+      console.log(msg, "MSD");
     }
   });
 });

@@ -10,14 +10,12 @@ import { AngularEditorModule } from "@kolkov/angular-editor";
 
 import { MultipleChoiceComponent } from "./multiple-choice/multiple-choice.component";
 import { GameService } from "./services/game.service";
-import { Log2Service } from "./services/log2.service";
+import { LogService } from "./services/log.service";
 import { ConfigService } from "./services/config.service";
 import { WorldComponent } from "./world/world.component";
 import { StorageService } from "./services/storage.service";
 import { HomeComponent } from "./home/home.component";
-import { BagComponent } from "./bag/bag.component";
-import { SaveComponent } from "./save/save.component";
-import { Log2Component } from "./log2/log2.component";
+import { BagComponent } from "./world/bag/bag.component";
 
 import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -29,6 +27,7 @@ import {
 import { LogComponent } from "./log/log.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+import { Engine2Component } from "./engine2/engine2.component";
 
 @NgModule({
   declarations: [
@@ -37,9 +36,7 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
     WorldComponent,
     HomeComponent,
     BagComponent,
-    SaveComponent,
     LogComponent,
-    Log2Component,
   ],
 
   imports: [
@@ -61,7 +58,8 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
     GameService,
     ConfigService,
     StorageService,
-    Log2Service,
+
+    LogService,
     FormBuilder,
     HttpClient,
     {

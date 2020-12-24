@@ -65,21 +65,6 @@
       "content": "Friday, Worked through the failing Qubole jobs in Prod, which turned out to be a weird deadlocking scenario when the feedback loop would read from domains found table at the same time the Qubole hive query was trying to write to it so My changes were tested in stage and then deployed to stage and prod and there is a PR open&nbsp; updated the mySQL connection session with another Query in the feedback loop. Today I am continuing the urlProcessor integration to the service worker.&nbsp;&nbsp;",
       "date": "2020-11-16T17:32:20.631Z",
       "tags": []
-    },
-    {
-      "id": 878600059,
-      "content": "yesterday, got feedback from andreas in regards to the hive etl PR, and had to just run through testing with beacon requests script and reconfirming more changes made to the hive queries, updated my PR after sprint planning and did some review. today Syncing up more with norman in regards to the new cluster and presto queries for 1 hour feedback loop. Will be doing that today",
-      "date": "2020-11-12T15:34:36.266Z"
-    },
-    {
-      "id": 254557512,
-      "content": "<div>Yesterday opened&nbsp; PRs for the Partition ticket, and addressed comments. I pushed up changes for the feedback loop repo and realized the timestamp still needed some work, I found a solution and will push it up shortly. I also did a quick TS migration tikcet and opened a PR for that. Today I'm prepping for demo and continuing to address comments on my PRs.&nbsp;</div><div><br></div>",
-      "date": "2020-11-10T17:16:59.238Z"
-    },
-    {
-      "id": 18952907,
-      "content": "<div>friday Worked through the partition ticket,&nbsp;<span style=\"background-color: transparent;\">&nbsp;</span><span style=\"background-color: transparent;\">updated the the feedback loop job, created a new table for hourly domains found, after my changes were done I&nbsp;</span><span style=\"background-color: transparent;\">tested out creating a new domain, running a test on aws,&nbsp; and getting the reported tag to show up in reported tag collections,&nbsp; Everything looks good for this ticket,</span></div><div><br></div><div>I spoke through the mitmProxy cli tool ticket with Ryan and it's requirements&nbsp;&nbsp;<span style=\"color: rgb(29, 28, 29); font-family: Slack-Lato, appleLogo, sans-serif; font-size: 15px; font-variant-ligatures: common-ligatures; background-color: rgb(248, 248, 248);\">(ran him through how the script files work)&nbsp; and threw some suggestions for him&nbsp; to make a cli tool with either python & node. we discussed possibly making a web-gui app or extension if support is gonna use it.&nbsp;</span><br></div><div><span style=\"color: rgb(29, 28, 29); font-family: Slack-Lato, appleLogo, sans-serif; font-size: 15px; font-variant-ligatures: common-ligatures; background-color: rgb(248, 248, 248);\"><br></span></div><div><span style=\"color: rgb(29, 28, 29); font-family: Slack-Lato, appleLogo, sans-serif; font-size: 15px; font-variant-ligatures: common-ligatures; background-color: rgb(248, 248, 248);\">possibly pair on that the coming sprint</span></div><div><span style=\"color: rgb(29, 28, 29); font-family: Slack-Lato, appleLogo, sans-serif; font-size: 15px; font-variant-ligatures: common-ligatures; background-color: rgb(248, 248, 248);\"><br></span></div><div>&nbsp;Im currently writing up two PRs and pushing my work in both the feedback loop repo and hive etl-worflow repo for the hourly feedback ticket. This morning norman explained&nbsp; dev ops git flow and&nbsp; after those PRs are open, I'm&nbsp; running through couple more tests for demo&nbsp; tomorrow & doing PR review.&nbsp;</div><div><br></div><br>",
-      "date": "2020-11-09T17:40:28.117Z"
     }
   ]
 }

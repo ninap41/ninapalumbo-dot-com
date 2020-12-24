@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { StorageService } from "../services/storage.service";
+import { Observable, of } from "rxjs";
 import {
   faSortUp,
   faSortDown,
@@ -9,6 +9,7 @@ import {
   faWindowClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { AngularEditorConfig } from "@kolkov/angular-editor";
+import { LogService } from "../services/log.service";
 import { editorConfig } from "./editorConfig";
 import { HtmlParser } from "@angular/compiler";
 import { toHtml } from "@fortawesome/fontawesome-svg-core";
@@ -30,15 +31,16 @@ export class LogComponent implements OnInit {
     index: null,
   };
   editorConfig = editorConfig;
+  entries: any[];
+  log: Observable<any[]>;
 
-  constructor(public _ls: StorageService) {}
+  constructor(public _ls: LogService) {}
   htmlContent = {
     htmlContent1: toHtml(""),
   };
 
-  ngOnInit(): void {
-    this._ls.updateStorageKey("log");
-    this._ls.validateIfStorageExists();
+  async ngOnInit(): Promise<void> {
+    await this._ls.getEntries();
   }
   toggleEdit(event, index) {
     this.editState.index = this.editState.state ? null : index;
