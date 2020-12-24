@@ -27,7 +27,6 @@ import {
 import { LogComponent } from "./log/log.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
-import { Engine2Component } from "./engine2/engine2.component";
 
 @NgModule({
   declarations: [
